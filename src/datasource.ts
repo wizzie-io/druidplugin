@@ -162,8 +162,8 @@ export default class DruidDatasource {
   }
 
   selectQuery(datasource: string, intervals: Array<string>, granularity: Druid.Granularity,
-              dimensions: Array<string | Object>, metric: Array<string | Object>, filters: Array<Druid.DruidFilter>,
-              selectThreshold: Object) {
+    dimensions: Array<string | Object>, metric: Array<string | Object>, filters: Array<Druid.DruidFilter>,
+    selectThreshold: Object) {
     let query: Druid.DruidSelectQuery = {
       "queryType": "select",
       "dataSource": datasource,
@@ -182,7 +182,7 @@ export default class DruidDatasource {
   };
 
   timeSeriesQuery(datasource: string, intervals: Array<string>, granularity: Druid.Granularity,
-                  filters: Array<Druid.DruidFilter>, aggregators: Object, postAggregators: Object) {
+    filters: Array<Druid.DruidFilter>, aggregators: Object, postAggregators: Object) {
     let query: Druid.DruidTimeSeriesQuery = {
       queryType: "timeseries",
       dataSource: datasource,
@@ -200,8 +200,8 @@ export default class DruidDatasource {
   };
 
   topNQuery(datasource: string, intervals: Array<string>, granularity: Druid.Granularity,
-            filters: Array<Druid.DruidFilter>, aggregators: Object, postAggregators: Object,
-            threshold: number, metric: string | Object, dimension: string | Object) {
+    filters: Array<Druid.DruidFilter>, aggregators: Object, postAggregators: Object,
+    threshold: number, metric: string | Object, dimension: string | Object) {
     const query: Druid.DruidTopNQuery = {
       queryType: "topN",
       dataSource: datasource,
@@ -222,8 +222,8 @@ export default class DruidDatasource {
   };
 
   groupByQuery(datasource: string, intervals: Array<string>, granularity: Druid.Granularity,
-               filters: Array<Druid.DruidFilter>, aggregators: Object, postAggregators: Object, groupBy: Array<string>,
-               limitSpec: Druid.LimitSpec) {
+    filters: Array<Druid.DruidFilter>, aggregators: Object, postAggregators: Object, groupBy: Array<string>,
+    limitSpec: Druid.LimitSpec) {
     const query: Druid.DruidGroupByQuery = {
       queryType: "groupBy",
       dataSource: datasource,
@@ -275,7 +275,7 @@ export default class DruidDatasource {
   };
 
   getDimensionsAndMetrics(datasource) {
-    return this.get(DRUID_DATASOURCE_PATH + datasource).then(response => {
+    return this.get(DRUID_DATASOURCE_PATH + "/" + datasource).then(response => {
       return response.data;
     });
   };
